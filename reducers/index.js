@@ -1,12 +1,11 @@
-const initialState = { counter: 0 };
-const reducer = (state = initialState, action) => {
-    switch (action.type) {
-        case 'INCREMENT':
-            return { counter: state.counter + 1 };
-        case 'DECREMENT':
-            return { counter: state.counter - 1 };
-    }
-    return state;
-}
+import { combineReducers } from "redux";
+import { counterReducer } from './counter';
+import { timerReducer } from './timer';
+import { weatherReducer } from './weather';
 
-export default reducer;
+export default combineReducers({
+    counter: counterReducer,
+    timer: timerReducer,
+    weather: weatherReducer,
+})
+

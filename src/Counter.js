@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 import { connect } from 'react-redux';
 
-import { increaseNumber, decreaseNumber } from '../actions/actionCreators';
+import { increaseNumber, decreaseNumber } from '../actions';
 
 class Counter extends Component {
     render() {
@@ -20,6 +20,7 @@ class Counter extends Component {
 }
 
 const mapStateToProps = (state) => {
+    //console.log(state.counter);
     return {
         counter: state.counter
     }
@@ -33,5 +34,5 @@ const basedFontSize = { fontSize: 24 };
 const styles = StyleSheet.create({
     container: { marginTop: 20 },
     buttonContainer: { flexDirection: 'row', justifyContent: 'space-around', paddingTop: 30, },
-    button: { flex: 1, width: '70%', height: 30 }
+    //button: { flex: 1, width: '70%', height: 30 }
 });
