@@ -22,6 +22,11 @@ export default class Home extends Component {
                             WEATHER
                         </Text>
                     </TouchableOpacity>
+                    <TouchableOpacity style={{ paddingTop: 30 }} onPress={() => this.props.navigation.navigate('TodoScreen')}>
+                        <Text style={[styles.btn, basedFontSize]}>
+                            TODO
+                        </Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         )
@@ -31,7 +36,7 @@ export default class Home extends Component {
 
 const basedFontSize = { fontSize: 22 };
 const styles = StyleSheet.create({
-    container: { marginTop: 25 },
-    buttonContainer: { flexDirection: 'column', paddingTop: 30, alignItems: 'center' },
+    container: { marginTop: 10 },
+    buttonContainer: { flexDirection: 'column', paddingTop: 20, alignItems: 'center' },
     btn: { backgroundColor: '#6EC1FF', width: 140, height: 90, borderRadius: 9, textAlign: 'center', lineHeight: 90 }
 });

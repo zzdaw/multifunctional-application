@@ -35,3 +35,18 @@ export function inputHandler(forecast) {
         forecast
     }
 }
+
+// export const addTask = (task) => ({
+//     type: 'ADD_TASK',
+//     task
+// })
+
+export function addTask(task) {
+    console.log(`Doszło do akcji`);
+    console.log(task);
+    return {
+        type: 'ADD_TASK',
+        task
+        //task: { text: task, id: 0 }
+    }
+}

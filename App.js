@@ -9,6 +9,7 @@ import Home from './src/Home';
 import Counter from './src/Counter';
 import Stopwatch from './src/Stopwatch';
 import LocalWeather from './src/LocalWeather';
+import Todo from './src/Todo';
 import reducer from './reducers/index';
 
 //composeWithDevTools pozwala na korzystanie z RN Debugger z Redux
@@ -30,10 +31,11 @@ const AppNavigator = createStackNavigator(
     HomeScreen: Home,
     CounterScreen: Counter,
     StopwatchScreen: Stopwatch,
-    LocalWeatherScreen: LocalWeather
+    LocalWeatherScreen: LocalWeather,
+    TodoScreen: Todo
   },
   {
-    initialRouteName: 'HomeScreen',
+    initialRouteName: 'TodoScreen',
   }
 );
 //tworzę kontener do którego przekazuję konfigurację ścieżek do routingu
