@@ -35,7 +35,7 @@ const AppNavigator = createStackNavigator(
     TodoScreen: Todo
   },
   {
-    initialRouteName: 'TodoScreen',
+    initialRouteName: 'HomeScreen',
   }
 );
 //tworzę kontener do którego przekazuję konfigurację ścieżek do routingu

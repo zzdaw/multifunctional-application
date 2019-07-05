@@ -13,6 +13,11 @@ export function todoReducer(state = initialState, action) {
                 flag: true,
                 key: (parseInt(state.key, 10) + 1).toString()
             }
+        case 'DELETE_TASK':
+            return {
+                ...state,
+                tasksArr: [...state.tasksArr.filter(item => item.key != action.id)]
+            }
         default: return state;
     }
 }

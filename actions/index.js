@@ -50,3 +50,10 @@ export function addTask(task) {
         //task: { text: task, id: 0 }
     }
 }
+
+export function deleteTask(id) {
+    return {
+        type: 'DELETE_TASK',
+        id
+    }
+}
