@@ -21,7 +21,8 @@
     "ws": "^7.0.0"
   },
   "devDependencies": {
-    "babel-preset-expo": "^5.0.0"
+    "babel-preset-expo": "^5.0.0",
+    "mem": "^5.1.1"
   },
   "private": true
 }
