@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { TouchableOpacity, StyleSheet, Text, View } from "react-native";
 
 export default class Home extends Component {
+    static navigationOptions = {
+        title: 'Home',
+    };
     render() {
         //console.log(this.props);
         return (
@@ -14,7 +17,7 @@ export default class Home extends Component {
                     </TouchableOpacity>
                     <TouchableOpacity style={{ paddingTop: 30 }} onPress={() => this.props.navigation.navigate('StopwatchScreen')}>
                         <Text style={[styles.btn, basedFontSize]}>
-                            STOPWATCH
+                            TIMER
                         </Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={{ paddingTop: 30 }} onPress={() => this.props.navigation.navigate('LocalWeatherScreen')}>
@@ -36,7 +39,7 @@ export default class Home extends Component {
 
 const basedFontSize = { fontSize: 22 };
 const styles = StyleSheet.create({
-    container: { marginTop: 10 },
-    buttonContainer: { flexDirection: 'column', paddingTop: 20, alignItems: 'center' },
-    btn: { backgroundColor: '#6EC1FF', width: 140, height: 90, borderRadius: 9, textAlign: 'center', lineHeight: 90 }
+    container: { flex: 1, backgroundColor: '#D3DBFF' },
+    buttonContainer: { flexDirection: 'row', flexWrap: 'wrap', paddingTop: 5, alignItems: 'center', justifyContent: 'space-around' },
+    btn: { backgroundColor: '#6EC1FF', width: 140, height: 90, borderRadius: 4, textAlign: 'center', lineHeight: 90 }
 });

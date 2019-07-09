@@ -2,42 +2,55 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 import { connect } from 'react-redux';
 
-import { startTimer, stopTimer, resetTimer } from '../actions';
+import { startTimer, stopTimer, resetTimer, tickTimer } from '../actions';
 
 class Stopwatch extends Component {
-    //kreatory akcji i reducer nie używają interwału
-    //po kliknięciu zmieniany jest stan, co powoduje ponowne renderowanie
-    componentDidMount() {
-        this.interval = setInterval(this.forceUpdate.bind(this), this.props.updateInterval || 33);
+    static navigationOptions = {
+        title: 'Timer',
+    };
+
+    start = () => {
+        this.props.startTimer();
+        this.interval = setInterval(() => { this.props.tickTimer() })
     }
 
-    componentWillUnmount() {
+    stop = () => {
         clearInterval(this.interval);
+        this.props.stopTimer();
     }
 
-    getElapsedTime(baseTime, startedAt, stoppedAt = new Date().getTime()) {
-        if (!startedAt) {
-            return 0;
-        } else {
-            return stoppedAt - startedAt + baseTime; //aktualny baseTime umożliwia wznowienie od zastopowanego momentu
+    reset = () => {
+        clearInterval(this.interval);
+        this.props.resetTimer();
+    }
+
+    format = (time) => {
+        const pad = (time, length) => {
+            while (time.length < length) {
+                time = '0' + time;
+            }
+            return time;
         }
+
+        time = new Date(time);
+        let m = pad(time.getMinutes().toString(), 2);
+        let s = pad(time.getSeconds().toString(), 2);
+        let ms = pad(time.getMilliseconds().toString(), 3);
+
+        return `${m} : ${s} . ${ms}`;
     }
 
     render() {
-        //console.log(this.props)
-        const { baseTime, startedAt, stoppedAt } = this.props;
-        const elapsed = this.getElapsedTime(baseTime, startedAt, stoppedAt);
-
         return (
             <View style={styles.container}>
                 <View>
                     <Text style={[basedFontSize, { textAlign: 'center' }]}>
-                        Timer: {Math.floor((elapsed) / 1000)}</Text>
+                        Time: {this.format(this.props.time)}</Text>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <Button title='START' onPress={() => this.props.startTimer(elapsed)} />
-                    <Button title='STOP' onPress={() => this.props.stopTimer()} />
-                    <Button title='CLEAR' onPress={() => this.props.resetTimer()} />
+                    <Button title='START' onPress={this.start} />
+                    <Button title='STOP' onPress={this.stop} />
+                    <Button title='CLEAR' onPress={this.reset} />
                 </View>
             </View>
         )
@@ -45,21 +58,19 @@ class Stopwatch extends Component {
 }
 
 const mapStateToProps = (state) => {
-    //console.log(state.counter);
+    // console.log(state);
     return {
-        baseTime: state.timer.baseTime,
-        startedAt: state.timer.startedAt,
-        stoppedAt: state.timer.stoppedAt
+        isOn: state.timer.isOn,
+        time: state.timer.time
     }
 }
 
-const mapDispatchToProps = { startTimer, stopTimer, resetTimer };
+const mapDispatchToProps = { startTimer, stopTimer, resetTimer, tickTimer };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Stopwatch);
 
 const basedFontSize = { fontSize: 24 };
 const styles = StyleSheet.create({
-    container: { marginTop: 20 },
+    container: { flex: 1, backgroundColor: '#D3DBFF' },
     buttonContainer: { flexDirection: 'row', justifyContent: 'space-around', paddingTop: 30, },
-    //button: { flex: 1, width: '70%', height: 30 }
 });

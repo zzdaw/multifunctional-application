@@ -17,7 +17,7 @@ const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 
 export default class App extends Component {
   render() {
-    //console.log(store.getState());
+    // console.log(store.getState());
     return (
       <Provider store={store}>
         < AppContainer />
@@ -36,6 +36,15 @@ const AppNavigator = createStackNavigator(
   },
   {
     initialRouteName: 'HomeScreen',
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#f4511e',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
   }
 );
 //tworzę kontener do którego przekazuję konfigurację ścieżek do routingu

@@ -7,6 +7,9 @@ import { dispatchFetch } from './ForecastFetch';
 import ForecastList from './ForecastList';
 
 class LocalWeather extends Component {
+    static navigationOptions = {
+        title: 'Local Weather',
+    };
     handleInput = event => {
         const postcode = event.nativeEvent.text;
         //console.log(event.nativeEvent.text);
@@ -42,10 +45,10 @@ export default connect(mapStateToProps, mapDispatchToProps)(LocalWeather);
 
 const basedFontSize = 24;
 const styles = StyleSheet.create({
-    container: { flex: 1 },
+    container: { flex: 1, backgroundColor: '#D3DBFF' },
     inputContainer: { paddingTop: 5, flexDirection: 'row', alignItems: 'center' },
     inputText: { flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'flex-start', padding: 30 },
-    inputCode: { height: basedFontSize, borderBottomColor: '#DDDDDD', borderBottomWidth: 1, marginLeft: 5, marginTop: 3 },
+    inputCode: { height: basedFontSize, borderBottomColor: '#000', borderBottomWidth: 1, marginLeft: 5, marginTop: 3 },
     mainText: { fontSize: basedFontSize },
     postcode: { flex: 1, flexBasis: 1, width: 50, height: basedFontSize },
 })

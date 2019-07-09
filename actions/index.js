@@ -5,25 +5,29 @@ export const decreaseNumber = () => ({
     type: 'DECREMENT',
 })
 
-export function startTimer(baseTime = 0) {
+export function startTimer() {
     return {
         type: 'START_TIMER',
-        baseTime: baseTime,
-        now: new Date().getTime() //liczba milisekund od 1.01.1970
+        offset: Date.now(),
     };
 }
 
 export function stopTimer() {
     return {
         type: 'STOP_TIMER',
-        now: new Date().getTime()
     };
 }
 
 export function resetTimer() {
     return {
         type: 'RESET_TIMER',
-        now: new Date().getTime()
+    };
+}
+
+export function tickTimer() {
+    return {
+        type: 'TICK',
+        time: Date.now()
     };
 }
 

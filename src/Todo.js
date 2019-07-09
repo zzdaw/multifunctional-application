@@ -7,6 +7,9 @@ import { addTask } from '../actions/index';
 import TodoList from './TodoList';
 
 class Todo extends Component {
+    static navigationOptions = {
+        title: 'Todo',
+    };
     state = {
         inputValue: ''
     }
@@ -55,7 +58,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Todo);
 
 const basedFontSize = 24;
 const styles = StyleSheet.create({
-    container: { flex: 1 },
+    container: { flex: 1, backgroundColor: '#D3DBFF' },
     input: { height: 45, paddingLeft: 6, margin: 10, fontSize: basedFontSize }
 })
 // onSubmitEditing={(event) => this.props.addTask(event.nativeEvent.text)}

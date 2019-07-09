@@ -1,7 +1,5 @@
 const initialState = {
-    startedAt: undefined,
-    stoppedAt: undefined,
-    baseTime: undefined
+    time: 0
 }
 
 export function timerReducer(state = initialState, action) {
@@ -11,14 +9,19 @@ export function timerReducer(state = initialState, action) {
         case "START_TIMER":
             return {
                 ...state,
-                baseTime: action.baseTime,
-                startedAt: action.now,
-                stoppedAt: undefined,
+                time: state.time,
+                offset: action.offset
             }
         case "STOP_TIMER":
             return {
                 ...state,
-                stoppedAt: action.now,
+                time: state.time
+            }
+        case 'TICK':
+            return {
+                ...state,
+                time: state.time + (action.time - state.offset),
+                offset: action.time
             }
         default: return state;
     }

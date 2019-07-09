@@ -5,8 +5,10 @@ import { connect } from 'react-redux';
 import { increaseNumber, decreaseNumber } from '../actions';
 
 class Counter extends Component {
+    static navigationOptions = {
+        title: 'Counter',
+    };
     render() {
-        //console.log(this.props);
         return (
             <View style={styles.container}>
                 <Text style={[basedFontSize, { textAlign: 'center' }]}>Counter: {this.props.counter}</Text>
@@ -20,7 +22,6 @@ class Counter extends Component {
 }
 
 const mapStateToProps = (state) => {
-    //console.log(state.counter);
     return {
         counter: state.counter
     }
@@ -32,7 +33,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(Counter);
 
 const basedFontSize = { fontSize: 24 };
 const styles = StyleSheet.create({
-    container: { marginTop: 20 },
+    container: { flex: 1, backgroundColor: '#D3DBFF' },
     buttonContainer: { flexDirection: 'row', justifyContent: 'space-around', paddingTop: 30, },
-    //button: { flex: 1, width: '70%', height: 30 }
 });
