@@ -58,7 +58,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Todo);
 
 const basedFontSize = 24;
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: '#D3DBFF' },
+    container: { flex: 1, backgroundColor: '#FDF9E3' },
     input: { height: 45, paddingLeft: 6, margin: 10, fontSize: basedFontSize }
 })
 // onSubmitEditing={(event) => this.props.addTask(event.nativeEvent.text)}

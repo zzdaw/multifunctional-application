@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import { connect } from 'react-redux';
 
@@ -11,22 +11,25 @@ class LocalWeather extends Component {
         title: 'Local Weather',
     };
     handleInput = event => {
-        const postcode = event.nativeEvent.text;
+        const cityName = event.nativeEvent.text;
         //console.log(event.nativeEvent.text);
-        this.props.dispatchFetch(postcode);
+        this.props.dispatchFetch(cityName);
     }
     render() {
+        // console.log(this.props.name)
         return (
             <View style={styles.container}>
                 <View style={styles.inputContainer}>
                     <View style={styles.inputText}>
-                        <Text style={styles.mainText}>Forecast for: </Text>
+                        <Text style={styles.mainText}>Forecast for (city): </Text>
                     </View>
                     <View style={styles.inputCode}>
-                        <TextInput onSubmitEditing={this.handleInput} style={styles.postcode} />
+                        <TextInput onSubmitEditing={this.handleInput} style={styles.cityName} />
                     </View>
                 </View>
-                {this.props.forecast ? <ForecastList /> : null}
+                <View style={styles.desContainer}>
+                    {this.props.forecast ? <ForecastList /> : null}
+                </View>
             </View>
         )
     }
@@ -45,10 +48,11 @@ export default connect(mapStateToProps, mapDispatchToProps)(LocalWeather);
 
 const basedFontSize = 24;
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: '#D3DBFF' },
+    container: { flex: 1, backgroundColor: '#FDF9E3' },
     inputContainer: { paddingTop: 5, flexDirection: 'row', alignItems: 'center' },
     inputText: { flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'flex-start', padding: 30 },
     inputCode: { height: basedFontSize, borderBottomColor: '#000', borderBottomWidth: 1, marginLeft: 5, marginTop: 3 },
     mainText: { fontSize: basedFontSize },
-    postcode: { flex: 1, flexBasis: 1, width: 50, height: basedFontSize },
+    cityName: { flex: 1, flexBasis: 1, width: 50, height: basedFontSize },
+    desContainer: { flex: 1, marginLeft: 20, marginRight: 20, marginBottom: 20, backgroundColor: '#FBF7F0' }
 })

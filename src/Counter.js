@@ -33,6 +33,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(Counter);
 
 const basedFontSize = { fontSize: 24 };
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: '#D3DBFF' },
+    container: { flex: 1, backgroundColor: '#FDF9E3' },
     buttonContainer: { flexDirection: 'row', justifyContent: 'space-around', paddingTop: 30, },
 });

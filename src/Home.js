@@ -39,7 +39,7 @@ export default class Home extends Component {
 
 const basedFontSize = { fontSize: 22 };
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: '#D3DBFF' },
+    container: { flex: 1, backgroundColor: '#FDF9E3' },
     buttonContainer: { flexDirection: 'row', flexWrap: 'wrap', paddingTop: 5, alignItems: 'center', justifyContent: 'space-around' },
-    btn: { backgroundColor: '#6EC1FF', width: 140, height: 90, borderRadius: 4, textAlign: 'center', lineHeight: 90 }
+    btn: { backgroundColor: '#E3DDCC', width: 140, height: 90, borderRadius: 4, textAlign: 'center', lineHeight: 90 }
 });
