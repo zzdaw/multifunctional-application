@@ -21,9 +21,9 @@ class Counter extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ counter }) => {
     return {
-        counter: state.counter
+        counter: counter
     }
 }
 

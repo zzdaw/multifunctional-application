@@ -10,13 +10,13 @@ class LocalWeather extends Component {
     static navigationOptions = {
         title: 'Local Weather',
     };
+
     handleInput = event => {
         const cityName = event.nativeEvent.text;
-        //console.log(event.nativeEvent.text);
         this.props.dispatchFetch(cityName);
     }
+
     render() {
-        // console.log(this.props.name)
         return (
             <View style={styles.container}>
                 <View style={styles.inputContainer}>
@@ -24,7 +24,10 @@ class LocalWeather extends Component {
                         <Text style={styles.mainText}>Forecast for (city): </Text>
                     </View>
                     <View style={styles.inputCode}>
-                        <TextInput onSubmitEditing={this.handleInput} style={styles.cityName} />
+                        <TextInput
+                            onSubmitEditing={this.handleInput}
+                            style={styles.cityName}
+                        />
                     </View>
                 </View>
                 <View style={styles.desContainer}>
@@ -36,7 +39,6 @@ class LocalWeather extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         forecast: state.weather.forecast
     }

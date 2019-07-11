@@ -28,7 +28,6 @@ class ForecastList extends Component {
         return `${h}:${m}`;
     }
     render() {
-        // console.log(parseInt(this.props.temp));
         return (
             <View style={styles.container}>
                 <View style={styles.iconContainer}>

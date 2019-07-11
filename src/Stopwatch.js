@@ -58,7 +58,6 @@ class Stopwatch extends Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state);
     return {
         isOn: state.timer.isOn,
         time: state.timer.time

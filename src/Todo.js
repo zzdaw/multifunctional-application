@@ -15,7 +15,12 @@ class Todo extends Component {
     }
 
     submitValue = () => {
-        this.props.addTask(this.state.inputValue);
+        let inputValue = this.state.inputValue.trim();
+        if (inputValue.length > 3) {
+            if (inputValue) {
+                this.props.addTask(inputValue);
+            }
+        }
         this.setState({
             inputValue: ''
         })
@@ -27,13 +32,11 @@ class Todo extends Component {
         })
     }
     render() {
-        // console.log(this.props.tasksArr);
         return (
             <View style={styles.container}>
                 <TextInput
-                    placeholder='Add task'
+                    placeholder='Add task, length>3'
                     style={styles.input}
-                    underlineColorAndroid='#428AF8'
                     onSubmitEditing={this.submitValue}
                     onChangeText={(text) => { this.setState({ inputValue: text }) }}
                     value={this.state.inputValue}
@@ -45,7 +48,6 @@ class Todo extends Component {
 }
 
 const mapStateToProps = (state) => {
-    //console.log(state);
     return {
         tasksArr: state.todo.tasksArr,
         flag: state.todo.flag
@@ -59,6 +61,14 @@ export default connect(mapStateToProps, mapDispatchToProps)(Todo);
 const basedFontSize = 24;
 const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: '#FDF9E3' },
-    input: { height: 45, paddingLeft: 6, margin: 10, fontSize: basedFontSize }
+    input: {
+        height: 45,
+        paddingLeft: 6,
+        margin: 10,
+        fontSize: basedFontSize,
+        borderWidth: 1,
+        borderColor: '#eee',
+        borderRadius: 8,
+        backgroundColor: '#fff'
+    }
 })
-// onSubmitEditing={(event) => this.props.addTask(event.nativeEvent.text)}

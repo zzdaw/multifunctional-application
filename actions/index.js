@@ -5,59 +5,40 @@ export const decreaseNumber = () => ({
     type: 'DECREMENT',
 })
 
-export function startTimer() {
-    return {
-        type: 'START_TIMER',
-        offset: Date.now(),
-    };
-}
+export const startTimer = () => ({
+    type: 'START_TIMER',
+    offset: Date.now(),
+})
 
-export function stopTimer() {
-    return {
-        type: 'STOP_TIMER',
-    };
-}
+export const stopTimer = () => ({
+    type: 'STOP_TIMER',
+})
 
-export function resetTimer() {
-    return {
-        type: 'RESET_TIMER',
-    };
-}
+export const resetTimer = () => ({
+    type: 'RESET_TIMER',
+})
 
-export function tickTimer() {
-    return {
-        type: 'TICK',
-        time: Date.now()
-    };
-}
+export const tickTimer = () => ({
+    type: 'TICK',
+    time: Date.now()
+})
 
-export function inputHandler(forecast) {
-    //console.log(`Doszło do akcji`);
-    //console.log(forecast);
-    return {
-        type: 'SET_FORECAST',
-        forecast
-    }
-}
+export const inputHandler = (forecast) => ({
+    type: 'SET_FORECAST',
+    forecast
+})
 
-// export const addTask = (task) => ({
-//     type: 'ADD_TASK',
-//     task
-// })
+export const addTask = (task) => ({
+    type: 'ADD_TASK',
+    task
+})
 
-export function addTask(task) {
-    console.log(`Doszło do akcji`);
-    console.log(task);
-    return {
-        type: 'ADD_TASK',
-        task
-        //task: { text: task, id: 0 }
-    }
-}
+export const deleteTask = (id) => ({
+    type: 'DELETE_TASK',
+    id
+})
 
-export function deleteTask(id) {
-    return {
-        type: 'DELETE_TASK',
-        id
-    }
-}
+export const doneTask = (id) => ({
+    type: 'DONE_TASK',
+    id
+})

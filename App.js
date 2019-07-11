@@ -17,7 +17,6 @@ const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 
 export default class App extends Component {
   render() {
-    // console.log(store.getState());
     return (
       <Provider store={store}>
         < AppContainer />
@@ -47,7 +46,7 @@ const AppNavigator = createStackNavigator(
     },
   }
 );
-//tworzę kontener do którego przekazuję konfigurację ścieżek do routingu
+
 const AppContainer = createAppContainer(AppNavigator);
 
 

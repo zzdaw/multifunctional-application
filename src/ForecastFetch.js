@@ -1,4 +1,5 @@
 import { inputHandler } from '../actions'
+
 //za pomocą redux-thunk mogę wywołać akcję w fetchForecast
 export const dispatchFetch = cityName => dispatch => {
     dispatch(fetchForecast(cityName));
@@ -12,7 +13,6 @@ function url(cityName) {
 }
 
 const fetchForecast = (cityName) => (dispatch) => {
-    //console.log(`Wywołany fetch`);
     fetch(url(cityName))
         .then(response => response.json())
         .then(responseJSON => dispatch(inputHandler(responseJSON)))
